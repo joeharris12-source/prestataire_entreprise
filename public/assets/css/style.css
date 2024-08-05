@@ -1,0 +1,247 @@
+body {
+    font-family: 'Tw Cen Mt', sans-serif;
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; 
+}
+
+header {
+    width: 100%;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav .logo {
+    width: 110px;
+    border-radius: 0 20px 20px 0;
+}
+
+nav ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+nav ul li {
+    margin-left: 20px;
+    position: relative;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: black;
+    font-size: 1.2rem;
+    transition: color .3s;
+    border: 2px solid #2eb0f0;
+    padding:  10px 20px;
+    border-radius: 15px;
+    font-weight: bold,;
+    transition: all 0.5s ease-in-out;
+}
+
+nav ul li a:hover {
+    color:black;
+    background-color: #2eb0f0;
+}
+
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 10px 14px;
+    text-decoration: none;
+    display: flex;
+}
+
+.dropdown-content a:hover {
+    background-color:#2eb0f0;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+    
+}
+
+.dropdown:hover .dropbtn {
+    color: #050505;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 15vh;
+    background: url("../images/5153829.jpg") no-repeat center center;
+    background-size: cover;
+    z-index: -1;
+}
+.overlay2 {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 14.5vh;
+    left: 0;
+    width: 100%;
+    height: 80%;
+    background: url("../images/picture1.png") no-repeat;
+    background-size: cover;
+    z-index: -1;
+}
+
+.overlay2a {
+    position: relative;
+    bottom: 0;
+    right: 0;
+    width: 70%;
+    background: rgba(173, 216, 230, 0.7);
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.text-overlay2a {
+    color: black;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+
+.text-overlay2a p st{
+    font-size: 1.5rem;
+}
+
+.overlay3 {
+    height: 500px;
+    margin-top: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-left: 10px;
+    
+}
+
+.overlay3 .image-container {
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+    display: inline;
+
+}
+
+.img-border{
+    position: relative;
+    border-radius: 50%;
+    border: #050505 3px solid;
+    padding: 5px;
+    transition: all 0.5s ease-in-out;
+    box-shadow: 0 0 20px 2px;
+}
+
+.img-border:hover{
+    width: 96%;
+    height: 100%;
+    border-radius: 20%;
+}
+
+.img-border img{
+    width: 350px;
+    height: 250px;
+    border-radius: 50%;
+    transition: all 0.5s ease-in-out;
+}
+
+.img-border img:hover {
+    width: 400px;
+    height: 350px;
+    border-radius: 20%;
+
+}
+
+.overlay3 img {
+    height: 350px;
+    display: block;
+}
+
+.overlay3 p {
+    margin-top: 30px;
+    font-size: 2rem;
+    color: rgba(0, 0, 255, 0.648);
+    font-weight: bold;
+}
+
+.footer {
+    display: flex;
+    padding: 20px;
+    background: rgba(173, 216, 230, 0.7);
+    height: 150px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-left,
+.footer-center,
+.footer-right {
+    flex: 1;
+}
+
+.footer-left img{
+    border-radius: 20px;
+}
+
+.footer-right{
+    display: flex;
+    height: 90%;
+}
+
+.reseau-info-title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: underline;
+}
+
+.contact-info{
+    width: 50%;
+    height: 100%;
+}
+.contact-info h2{
+    text-decoration: underline;
+}
+
+.images{
+    display: flex;
+    align-items: center;
+justify-content: center;}
+.images img{
+    width: 25px;
+    margin: 8px;
+    
+}
+
+.reseau-info{
+    width: 50%;
+    height: 100%;
+}
+
+.footer-center {
+    text-align: center;
+}
+.footer-left .logo {
+    width: 150px;
+}
