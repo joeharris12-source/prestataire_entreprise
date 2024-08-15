@@ -35,6 +35,6 @@ class LoginController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/')->with('success', 'Déconnexion réussie');
+        return redirect()->route('prestataire.dashboard')->with('success', 'Inscription réussie et connecté !');
     }
 }

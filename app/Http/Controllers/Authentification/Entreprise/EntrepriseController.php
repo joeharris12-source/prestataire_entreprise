@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 
 class EntrepriseController extends Controller
 {
-    public function showLogin()
+    public function showRegisterForm()
     {
         return view('login2');
     }
@@ -35,8 +35,6 @@ class EntrepriseController extends Controller
             ]);
 
             User::create([
-                'name' => $request->name,
-                'firstname' => $request->firstname,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
                 'type' => 'entreprise',
