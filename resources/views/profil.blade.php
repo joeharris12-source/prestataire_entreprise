@@ -62,7 +62,7 @@
                 </div>
                 <div>
                     <label for="secteur_activite">Secteur d'Activité:</label>
-                    <input type="text" id="secteur_activite" name="secteur_activite" value="{{ $prestataire->secteur_activite }}" required>
+                    <input type="text" id="secteur_activite" name="secteurs_activite" value="{{ $prestataire->secteurs_activite }}" required>
                 </div>
                 <div>
                     <label for="adresse">Adresse:</label>

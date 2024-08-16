@@ -19,9 +19,8 @@ class PreventBackHistory
     {
         $response = $next($request);
 
-        // Si l'utilisateur est authentifié, désactiver la mise en cache des pages
         return $response->header('Cache-Control', 'no-store, no-cache, must-revalidate, post-check=0, pre-check=0')
                         ->header('Pragma', 'no-cache')
-                        ->header('Expires', '0');
+                        ->header('Expires', 'Sat, 01 Jan 2000 00:00:00 GMT');
     }
 }

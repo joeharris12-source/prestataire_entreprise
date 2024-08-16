@@ -30,7 +30,7 @@ class ProfilController extends Controller
             'email' => 'required|string|email|max:255|unique:prestataires,email,' . Auth::id(),
             'telephone' => 'required|string|max:15',
             'ville' => 'required|string|max:255',
-            'secteur_activite' => 'required|string|max:255',
+            'secteurs_activite' => 'required|string|max:255',
             'adresse' => 'required|string|max:255',
         ]);
 
@@ -43,7 +43,7 @@ class ProfilController extends Controller
             'email' => $request->email,
             'telephone' => $request->telephone,
             'ville' => $request->ville,
-            'secteur_activite' => $request->secteur_activite,
+            'secteurs_activite' => $request->secteur_activite,
             'adresse' => $request->adresse,
         ]);
 

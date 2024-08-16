@@ -16,7 +16,7 @@ class DashboardController extends Controller
         $prestataire = Auth::guard('prestataire')->user();
 
         // Récupérer les projets liés au prestataire
-        $completedProjects = Project::where('prestataire_id', $prestataire->id)
+        $completedProjects = Project::where('id', $prestataire->id)
                                     ->where('status', 'completed')
                                     ->get();
 

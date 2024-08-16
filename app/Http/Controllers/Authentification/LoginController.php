@@ -15,35 +15,43 @@ class LoginController extends Controller
     }
 
     public function login(Request $request)
-    {
-        $request->validate([
-            'email' => 'required|email',
-            'password' => 'required|string',
-        ]);
-
-        if (Auth::attempt($request->only('email', 'password'))) {
-            // Redirection en fonction du type d'utilisateur
-            $user = Auth::user();
-            if ($user->is_prestataire) {
-                return redirect()->route('prestataire.dashboard')->with('success', 'Connexion réussie');
-            } elseif ($user->is_entreprise) {
-                return redirect()->route('entreprise.dashboard')->with('success', 'Connexion réussie');
-            } else {
-                return redirect()->route('home')->with('success', 'Connexion réussie');
-            }
+{
+    $request->validate([
+        'email' => 'required|email',
+        'password' => 'required|string',
+    ]);
+    $prestataire = \App\Models\Prestataire::where('email', $request->email)->first();
+    if ($prestataire) {
+        if (Auth::guard('prestataire')->attempt($request->only('email', 'password'))) {
+            return redirect()->route('prestataire.dashboard')->with('success', 'Connexion réussie');
+        } else {
+            return back()->withErrors(['password' => 'Le mot de passe est incorrect.']);
         }
-
-        throw ValidationException::withMessages([
-            'email' => [trans('auth.failed')],
-        ]);
     }
 
-    public function logout(Request $request)
-    {
-        Auth::logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-
-        return redirect('/')->with('success', 'Déconnexion réussie');
+    if (Auth::attempt($request->only('email', 'password'))) {
+        $user = Auth::user();
+        
+        // Vérifiez si l'utilisateur est un prestataire
+        if ($user->is_prestataire) {
+            return redirect()->route('prestataire.dashboard')->with('success', 'Connexion réussie');
+        } elseif ($user->is_entreprise) {
+            return redirect()->route('entreprise.dashboard')->with('success', 'Connexion réussie');
+        } else {
+            return redirect()->route('home')->with('success', 'Connexion réussie');
+        }
     }
+
+    return back()->withErrors([
+        'email' => 'Les informations d’identification ne correspondent pas.',
+    ]);
+}
+public function logout(Request $request)
+{
+    Auth::logout();
+    $request->session()->invalidate();
+    $request->session()->regenerateToken();
+
+    return redirect('/')->with('success', 'Déconnecté avec succès.');
+}
 }

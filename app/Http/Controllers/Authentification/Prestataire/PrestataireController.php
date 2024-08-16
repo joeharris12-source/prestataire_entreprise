@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Authentification\Prestataire;
 
 use App\Http\Controllers\Controller;
@@ -13,7 +12,7 @@ class PrestataireController extends Controller
 {
     public function showRegisterForm()
     {
-        return view('login'); 
+        return view('login');
     }
 
     public function register(Request $request)

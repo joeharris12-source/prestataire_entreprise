@@ -7,17 +7,7 @@
     <title>Tableau de bord - Prestataire</title>
     <link rel="stylesheet" href="{{ asset('assets/css/dashPres.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-    <script>
-        function confirmDeletion(event) {
-            event.preventDefault(); // Empêche l'action par défaut du lien
-
-            // Affiche une boîte de dialogue de confirmation
-            if (confirm("Êtes-vous sûr de vouloir supprimer votre profil ? Cette action est irréversible.")) {
-                // Si l'utilisateur clique sur "Oui", soumettre le formulaire de suppression
-                document.getElementById('delete-form').submit();
-            }
-        }
-    </script>
+    <script src="{{asset('assets/js/script.js')}}"></script> 
 </head>
 
 <body>
@@ -51,6 +41,17 @@
             </form>
         </main>
     </div>
+    <div id="confirmationModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Confirmation de suppression</h2>
+            <p>Êtes-vous sûr de vouloir supprimer votre profil ? Cette action est irréversible.</p>
+            <div class="modal-buttons">
+                <button id="confirmDelete" class="btn-confirm">Oui, supprimer</button>
+                <button id="cancelDelete" class="btn-cancel">Annuler</button>
+            </div>
+        </div>
+     </div>
 </body>
 
 </html>
