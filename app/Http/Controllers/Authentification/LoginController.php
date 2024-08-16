@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers\Authentification;
 
 use App\Http\Controllers\Controller;
@@ -21,7 +22,15 @@ class LoginController extends Controller
         ]);
 
         if (Auth::attempt($request->only('email', 'password'))) {
-            return redirect()->intended('/welcome')->with('success', 'Connexion réussie');
+            // Redirection en fonction du type d'utilisateur
+            $user = Auth::user();
+            if ($user->is_prestataire) {
+                return redirect()->route('prestataire.dashboard')->with('success', 'Connexion réussie');
+            } elseif ($user->is_entreprise) {
+                return redirect()->route('entreprise.dashboard')->with('success', 'Connexion réussie');
+            } else {
+                return redirect()->route('home')->with('success', 'Connexion réussie');
+            }
         }
 
         throw ValidationException::withMessages([
@@ -35,6 +44,6 @@ class LoginController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect()->route('prestataire.dashboard')->with('success', 'Inscription réussie et connecté !');
+        return redirect('/')->with('success', 'Déconnexion réussie');
     }
 }

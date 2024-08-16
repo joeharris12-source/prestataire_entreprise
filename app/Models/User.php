@@ -15,4 +15,13 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+    public function getIsPrestataireAttribute()
+    {
+        return $this->type === 'prestataire';
+    }
+
+    public function getIsEntrepriseAttribute()
+    {
+        return $this->type === 'entreprise';
+    }
 }
