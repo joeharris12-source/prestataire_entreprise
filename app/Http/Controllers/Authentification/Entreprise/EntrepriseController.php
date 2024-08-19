@@ -7,6 +7,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+
 
 class EntrepriseController extends Controller
 {
@@ -20,8 +22,12 @@ class EntrepriseController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'firstname' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:entreprises|unique:users',
+            'email' => 'required|string|email|max:255|unique:entreprises',
+            'telephone'=>'required|string|max:30',
+            'ville'=>'required|string|max:255',
+            'quartier'=>'required|string|max:255',
             'password' => 'required|string|min:8',
+        
         ]);
 
         DB::beginTransaction();
@@ -31,6 +37,9 @@ class EntrepriseController extends Controller
                 'name' => $request->name,
                 'firstname' => $request->firstname,
                 'email' => $request->email,
+                'telephone' => $request->telephone,
+                'ville' => $request->ville,
+                'quartier' => $request->quartier,
                 'password' => Hash::make($request->password),
             ]);
 
@@ -41,6 +50,7 @@ class EntrepriseController extends Controller
             ]);
 
             DB::commit();
+            Auth::guard('entreprise')->login($entreprise);
 
             return redirect('/login/entreprise')->with('success', 'Inscription réussie');
         } catch (\Exception $e) {

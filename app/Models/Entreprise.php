@@ -1,18 +1,15 @@
 <?php
 
+
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Entreprise extends Model
+class Entreprise extends Authenticatable
 {
-    use HasFactory;
-
-    protected $table = 'entreprises';
 
     protected $fillable = [
-        'name', 'firstname', 'email', 'password',
+        'name', 'firstname', 'email', 'telephone', 'ville', 'quartier', 'password',
     ];
 
     protected $hidden = [

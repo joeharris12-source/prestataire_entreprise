@@ -1,0 +1,48 @@
+.dashboard-container {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #2c3e50;
+    padding: 20px;
+    color: #ecf0f1;
+}
+
+.sidebar .logo img {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.sidebar nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar nav ul li {
+    margin: 20px 0;
+}
+
+.sidebar nav ul li a {
+    color: #ecf0f1;
+    text-decoration: none;
+    font-size: 18px;
+    display: block;
+}
+
+.sidebar nav ul li a:hover {
+    background-color: #34495e;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.content {
+    flex: 1;
+    padding: 40px;
+    background-color: #ecf0f1;
+}
+
+h1 {
+    margin-bottom: 20px;
+}

@@ -4,6 +4,7 @@ use App\Http\Controllers\Authentification\Entreprise\EntrepriseController;
 use App\Http\Controllers\Authentification\LoginController;
 use App\Http\Controllers\Authentification\Prestataire\DashboardController;
 use App\Http\Controllers\Authentification\Prestataire\ProfilController;
+use App\Http\Controllers\Authentification\Entreprise\DashboardEntrepriseController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -32,3 +33,6 @@ Route::post('/logout', [App\Http\Controllers\Authentification\LoginController::c
 Route::get('/register', function() {
     return view('auth.register'); 
 })->name('register');
+Route::middleware(['auth', 'CheckEntreprise'])->group(function () {
+    Route::get('/dashboard/entreprise', [DashboardEntrepriseController::class, 'index'])->name('entreprise.dashboard');
+});

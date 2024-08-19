@@ -19,8 +19,8 @@
         <div class="overlay"></div>
         <div class="form-container">
             <h2>Inscription d'entreprise</h2>
-            <form action="{{ route('entreprise.register') }}" method="POST">
-            @csrf
+            <form action="{{ route('entreprise.register') }}" method="POST" style="display: grid;grid-template-columns: repeat(2,1fr); gap:20px" >
+             @csrf
                 <div class="form-group">
                     <label for="name">Nom :</label>
                     <input type="text" id="name" name="name" required>
@@ -34,10 +34,28 @@
                     <input type="email" id="email" name="email" required>
                 </div>
                 <div class="form-group">
+                        <label for="telephone">Téléphone :</label>
+                        <input type="text" id="telephone" name="telephone">
+                </div>
+                <div class="form-group">
+                        <label for="ville">Ville :</label>
+                        <input type="text" id="ville" name="ville">
+                </div>
+                <div class="form-group">
+                        <label for="quartier">quartier:</label>
+                        <input type="text" id="quartier" name="quartier">
+                    </div>
+                <div class="form-group">
                     <label for="password">Mot de passe :</label>
                     <input type="password" id="password" name="password" required>
                 </div>
-                <input type="submit" value="S'inscrire">
+                <div class="form-group">
+                        <label for="password_confirmation">Confirmer le mot de passe :</label>
+                        <input type="password" id="password_confirmation" name="password_confirmation" required>
+                    </div>
+                    <div class="form-group" style="grid-column: span 2; text-align: center;">
+                        <input type="submit" value="S'inscrire">
+                    </div>
             </form>
         </div>
     </div>
