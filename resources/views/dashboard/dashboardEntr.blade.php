@@ -17,8 +17,8 @@
             <nav>
                 <ul>
                     <li><a href="{{ route('profilEntr') }}">Profil</a></li>
-                    <li><a href="#">Historique</a></li>
-                    <li><a href="#">Ajouter un Projet</a></li>
+                    <li><a href="{{ route('historique') }}">Historique</a></li>
+                    <li><a href="{{ route('projet') }}">Ajouter un Projet</a></li>
                     <li><a href="#"  onclick="confirmDeletion(event)">Supprimer</a></li>
                     <div class="logout">
     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -35,22 +35,24 @@
             @if (session('success'))
                 <p>{{ session('success') }}</p>
             @endif
-     <div id="confirmationModal" class="modal">
-        <div class="modal-content">
-            <span class="close-button">&times;</span>
-            <h2>Confirmation de suppression</h2>
-            <p>Êtes-vous sûr de vouloir supprimer votre profil ? Cette action est irréversible.</p>
-            <div class="modal-buttons">
-                <button id="confirmDelete" class="btn-confirm">Oui, supprimer</button>
-                <button id="cancelDelete" class="btn-cancel">Annuler</button>
-            </div>
+            <form id="delete-form" action="{{ route('delete-profilEntr', ['id' => $entreprise->id]) }}" method="POST" style="display: none;">
+    @csrf
+    @method('DELETE')
+</form>
+
+<!-- Modal de confirmation -->
+<div id="confirmationModal" class="modal">
+    <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h2>Confirmation de suppression</h2>
+        <p>Êtes-vous sûr de vouloir supprimer votre profil ? Cette action est irréversible.</p>
+        <div class="modal-buttons">
+            <button id="confirmDelete" class="btn-confirm">Oui, supprimer</button>
+            <button id="cancelDelete" class="btn-cancel">Annuler</button>
         </div>
-     </div>
-        <!-- Formulaire de suppression caché -->
-            <form id="delete-form" action="{{ route('delete-profil') }}" method="POST" style="display: none;">
-                @csrf
-                @method('DELETE')
-            </form>
+    </div>
+</div>
+
         </main>
     </div>
 </body>

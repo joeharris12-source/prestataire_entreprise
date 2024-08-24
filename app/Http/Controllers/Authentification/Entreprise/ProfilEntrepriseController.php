@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Authentification\Entreprise;
 
 use App\Http\Controllers\Controller;
 use App\Models\Entreprise;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -57,21 +58,30 @@ class ProfilEntrepriseController extends Controller
     /**
      * Supprimer le profil de l'entreprise.
      */
-    public function destroy()
-    {
-        // Récupère l'entreprise authentifiée
-        $entreprise = Entreprise::where('id', Auth::guard('entreprise')->user()->id)->first();
-
-        // Supprime l'entrée correspondante dans la table 'users'
-        DB::table('users')->where('email', $entreprise->email)->delete();
-
-        // Supprime l'entreprise de la base de données
-        $entreprise->delete();
-
-        // Déconnecte l'entreprise
-        Auth::guard('entreprise')->logout();
-
-        // Redirige vers la page d'accueil avec un message de succès
-        return redirect('/')->with('success', 'Votre profil a été supprimé avec succès.');
-    }
-}
+    
+     public function destroy($id, Request $request)
+     {
+         // Trouver l'entreprise par son ID
+         $entreprise = Entreprise::find($id);
+     
+         if (!$entreprise) {
+             return redirect()->back()->withErrors('Entreprise non trouvée.');
+         }
+     
+         // Suppression de l'entreprise dans la table entreprises
+         $entreprise->delete();
+     
+         // Suppression de l'utilisateur associé dans la table users
+         User::where('email', $entreprise->email)->delete();
+     
+         // Déconnexion de l'entreprise
+         Auth::guard('entreprise')->logout();
+     
+         // Invalidation de la session
+         $request->session()->invalidate();
+         $request->session()->regenerateToken();
+     
+         // Redirection vers la page d'accueil avec un message de succès
+         return redirect('/')->with('success', 'Entreprise supprimée avec succès.');
+     }
+    }     

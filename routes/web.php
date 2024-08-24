@@ -9,6 +9,8 @@ use App\Http\Controllers\Authentification\Prestataire\EntrprestataireController;
 use App\Http\Controllers\Authentification\Prestataire\DashboardEntrpresController;
 use App\Http\Controllers\Authentification\Prestataire\ProfilEntrpresController;
 use App\Http\Controllers\Authentification\Entreprise\ProfilEntrepriseController;
+use App\Http\Controllers\Authentification\Entreprise\ProjetController;
+
 
 
 
@@ -43,8 +45,13 @@ Route::middleware(['auth:entreprise'])->group(function () {
     Route::get('/entreprise/dashboard', [DashboardEntrepriseController::class, 'index'])->name('entreprise.dashboard');
     Route::get('/profil-entreprise', [ProfilEntrepriseController::class, 'show'])->name('profilEntr');
     Route::put('/profil-entreprise', [ProfilEntrepriseController::class, 'update'])->name('profilEntreprise.update');
-    Route::delete('/profil-entreprise', [ProfilEntrepriseController::class, 'destroy'])->name('profilEntreprise.destroy');
-
+    Route::delete('/entreprise/{id}', [ProfilEntrepriseController::class, 'destroy'])->name('delete-profilEntr');
+    Route::get('/projets/create', [ProjetController::class, 'create'])->name('projet');
+    Route::post('/projets', [ProjetController::class, 'store'])->name('projets.store');
+    Route::get('/historique', [ProjetController::class, 'index'])->name('historique');
+    Route::get('/projets/{id}/edit', [ProjetController::class, 'edit'])->name('projets.edit');
+    Route::put('/projets/{id}', [ProjetController::class, 'update'])->name('projets.update');
+    Route::delete('/projets/{id}', [ProjetController::class, 'destroy'])->name('projets.destroy');
 });
 
 
