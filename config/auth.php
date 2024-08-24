@@ -7,48 +7,49 @@ return [
         'passwords' => 'users',
     ],
 
-   'guards' => [
-    'web' => [
-        'driver' => 'session',
-        'provider' => 'users',
+    'guards' => [
+        'web' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
+
+        'prestataire' => [
+            'driver' => 'session',
+            'provider' => 'prestataires',
+        ],
+
+        'entrprestataires' => [
+            'driver' => 'session',
+            'provider' => 'entrprestataires',
+        ],
+
+        'entreprise' => [
+            'driver' => 'session',
+            'provider' => 'entreprises',
+        ],
     ],
 
-    'prestataire' => [
-        'driver' => 'session',
-        'provider' => 'prestataires',  // Correspond au provider prestataires
-    ],
-],
+    'providers' => [
+        'users' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\User::class,
+        ],
 
-'providers' => [
-    'users' => [
-        'driver' => 'eloquent',
-        'model' => App\Models\User::class,
-    ],
+        'prestataires' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Prestataire::class,
+        ],
 
-    'prestataires' => [
-        'driver' => 'eloquent',
-        'model' => App\Models\Prestataire::class,
-    ],
-],
+        'entrprestataires' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Entrprestataires::class, // Assurez-vous que le modèle existe
+        ],
 
-    /*
-    |--------------------------------------------------------------------------
-    | Resetting Passwords
-    |--------------------------------------------------------------------------
-    |
-    | You may specify multiple password reset configurations if you have more
-    | than one user table or model in the application and you want to have
-    | separate password reset settings based on the specific user types.
-    |
-    | The expiry time is the number of minutes that each reset token will be
-    | considered valid. This security feature keeps tokens short-lived so
-    | they have less time to be guessed. You may change this as needed.
-    |
-    | The throttle setting is the number of seconds a user must wait before
-    | generating more password reset tokens. This prevents the user from
-    | quickly generating a very large amount of password reset tokens.
-    |
-    */
+        'entreprises' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Entreprise::class,
+        ],
+    ],
 
     'passwords' => [
         'users' => [
@@ -58,17 +59,6 @@ return [
             'throttle' => 60,
         ],
     ],
-
-    /*
-    |--------------------------------------------------------------------------
-    | Password Confirmation Timeout
-    |--------------------------------------------------------------------------
-    |
-    | Here you may define the amount of seconds before a password confirmation
-    | times out and the user is prompted to re-enter their password via the
-    | confirmation screen. By default, the timeout lasts for three hours.
-    |
-    */
 
     'password_timeout' => 10800,
 

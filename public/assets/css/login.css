@@ -197,3 +197,61 @@ form{
     width: 150px;
     border-radius: 20px;
 }
+.error-message {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+
+input.match {
+    border-color: green;
+    background-color: #e0ffe0; 
+    color: green; 
+}
+
+input.mismatch {
+    border-color: red;
+    background-color: #ffe0e0; 
+    color: red; 
+}
+.button-group {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0; /* Espacement autour des boutons */
+}
+
+.button-group a {
+    display: inline-block;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    border-radius: 50px;
+    font-weight: bold;
+    margin: 0 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-particulier {
+    background-color: #4CAF50; /* Couleur verte */
+}
+
+.btn-particulier:hover {
+    background-color: #45a049; /* Couleur verte foncée au survol */
+}
+
+.btn-entreprise {
+    background-color: #008CBA; /* Couleur bleue */
+}
+
+.btn-entreprise:hover {
+    background-color: #007bb5; /* Couleur bleue foncée au survol */
+}
+input[type="date"] {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+

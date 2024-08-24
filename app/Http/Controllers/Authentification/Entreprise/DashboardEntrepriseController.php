@@ -10,8 +10,6 @@ class DashboardEntrepriseController extends Controller
     public function index()
     {
         // Return the dashboard view
-        return view('entreprise.dashboard', [
-            'entreprise' => Auth::user()
-        ]);
+        return view('dashboard.dashboardEntr');
     }
 }
