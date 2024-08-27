@@ -6,46 +6,62 @@ use App\Models\Entreprise;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class EntrepriseController extends Controller
 {
+    // Affiche le formulaire d'inscription
     public function showRegisterForm()
     {
-        return view('login2');
+        return view('inscription.login2');
     }
 
-    public function register(Request $request)
-    {
-        $request->validate([
+    // Gère l'inscription d'une entreprise
+public function register(Request $request, Entreprise $entreprise)
+{
+        //dd($request);
+        // Validation des données du formulaire
+        $validateData = $request->validate([
             'name' => 'required|string|max:255',
-            'firstname' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:entreprises|unique:users',
-            'password' => 'required|string|min:8',
+            'status' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:entreprises',
+            'telephone' => 'required|string|max:30',
+            'ville' => 'required|string|max:255',
+            'adresse' => 'required|string|max:255',
+            'password' => 'required|string|min:8|confirmed',
         ]);
-
-        DB::beginTransaction();
+    
+        // Débogage des données validées
         
+    
         try {
+            // Crée une nouvelle entreprise
             $entreprise = Entreprise::create([
-                'name' => $request->name,
-                'firstname' => $request->firstname,
-                'email' => $request->email,
-                'password' => Hash::make($request->password),
+                'name' => $validateData['name'],
+                'status' => $validateData['status'],
+                'email' => $validateData['email'],
+                'telephone' => $validateData['telephone'],
+                'ville' => $validateData['ville'],
+                'adresse' => $validateData['adresse'],
+                'password' => Hash::make($validateData['password']),
             ]);
-
-            User::create([
-                'email' => $request->email,
-                'password' => Hash::make($request->password),
-                'type' => 'entreprise',
+            $user = User::create([
+                'email' => $validateData['email'],
+                'password' => Hash::make($validateData['password']),
             ]);
-
-            DB::commit();
-
-            return redirect('/login/entreprise')->with('success', 'Inscription réussie');
+    
+            // Authentifie l'entreprise après inscription
+            Auth::guard('entreprise')->login($entreprise);
+    
+            // Redirige vers le tableau de bord avec un message de succès
+            return redirect()->route('entreprise.dashboard')->with('success', 'Inscription réussie');
         } catch (\Exception $e) {
-            DB::rollback();
+            // Débogage de l'erreur
+            dd($e->getMessage());
+    
             return back()->with('error', 'Erreur lors de l\'inscription: ' . $e->getMessage());
         }
     }
+    
+    
 }

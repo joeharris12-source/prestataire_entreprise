@@ -17,7 +17,7 @@ class ProfilController extends Controller
         
         $prestataire = Auth::user();
 
-        return view('profil', compact('prestataire'));
+        return view('profil.profil', compact('prestataire'));
     }
 
     
@@ -32,6 +32,7 @@ class ProfilController extends Controller
             'ville' => 'required|string|max:255',
             'secteurs_activite' => 'required|string|max:255',
             'adresse' => 'required|string|max:255',
+            
         ]);
 
         
@@ -43,7 +44,7 @@ class ProfilController extends Controller
             'email' => $request->email,
             'telephone' => $request->telephone,
             'ville' => $request->ville,
-            'secteurs_activite' => $request->secteur_activite,
+            'secteurs_activite' => $request->secteurs_activite,
             'adresse' => $request->adresse,
         ]);
 

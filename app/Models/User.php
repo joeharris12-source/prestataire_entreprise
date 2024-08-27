@@ -24,4 +24,8 @@ class User extends Authenticatable
     {
         return $this->type === 'entreprise';
     }
+    public function getIsEntrprestatairesAttribute()
+    {
+        return $this->type === 'Entrprestataires';
+    }
 }

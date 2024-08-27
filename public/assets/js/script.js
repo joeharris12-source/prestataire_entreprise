@@ -1,4 +1,4 @@
-// script.js
+// public/js/deleteConfirmation.js
 
 document.addEventListener('DOMContentLoaded', function() {
     var modal = document.getElementById('confirmationModal');
@@ -29,7 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Remplacez l'événement onclick par une fonction confirmDeletion
     var deleteLink = document.querySelector('a[onclick="confirmDeletion(event)"]');
     deleteLink.onclick = confirmDeletion;
 });

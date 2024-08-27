@@ -12,21 +12,35 @@ class PrestataireController extends Controller
 {
     public function showRegisterForm()
     {
-        return view('login');
+        return view('inscription.login');
     }
 
     public function register(Request $request)
     {
-        // Valider les données d'inscription
+        // Valider les données d'inscription avec des messages personnalisés
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'firstname' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:prestataires', 
+            'email' => 'required|string|email|max:255|unique:prestataires',
             'password' => 'required|string|min:8|confirmed',
             'telephone' => 'required|string|max:20',
             'ville' => 'required|string|max:255',
             'secteurs_activite' => 'required|string|max:255',
             'adresse' => 'required|string|max:255',
+        ], [
+            'name.required' => 'Le champ Nom est requis.',
+            'firstname.required' => 'Le champ Prénom est requis.',
+            'email.required' => 'Le champ Email est requis.',
+            'email.email' => 'Veuillez fournir une adresse email valide.',
+            'email.unique' => 'Cet email est déjà utilisé.',
+            'password.required' => 'Le champ Mot de passe est requis.',
+            'password.min' => 'Le mot de passe doit contenir au moins 8 caractères.',
+            'password.confirmed' => 'La confirmation du mot de passe ne correspond pas.',
+            'telephone.required' => 'Le champ Téléphone est requis.',
+            'ville.required' => 'Le champ Ville est requis.',
+            'secteurs_activite.required' => 'Le champ Secteurs d\'activité est requis.',
+            'adresse.required' => 'Le champ Adresse est requis.',
+
         ]);
 
         // Créer un nouveau prestataire
@@ -40,6 +54,7 @@ class PrestataireController extends Controller
             'adresse' => $validatedData['adresse'],
             'password' => Hash::make($validatedData['password']),
         ]);
+
         $user = User::create([
             'email' => $validatedData['email'],
             'password' => Hash::make($validatedData['password']),
@@ -52,3 +67,4 @@ class PrestataireController extends Controller
         return redirect()->route('prestataire.dashboard')->with('success', 'Inscription réussie et connecté !');
     }
 }
+

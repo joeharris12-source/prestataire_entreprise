@@ -25,7 +25,7 @@ class DashboardController extends Controller
                                    ->get();
 
         // Passer les données à la vue
-        return view('dashboardPres', [
+        return view('dashboard.dashboardPres', [
             'prestataire' => $prestataire,
             'completedProjects' => $completedProjects,
             'ongoingProjects' => $ongoingProjects,
