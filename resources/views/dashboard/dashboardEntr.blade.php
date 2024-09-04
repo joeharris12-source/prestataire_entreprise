@@ -19,6 +19,7 @@
                     <li><a href="{{ route('profilEntr') }}">Profil</a></li>
                     <li><a href="{{ route('historique') }}">Historique</a></li>
                     <li><a href="{{ route('projet') }}">Ajouter un Projet</a></li>
+                    <li><a href="{{ route('entreprise-prestataires') }}" class="btn btn-primary">Voir les prestataires</a></li>
                     <li><a href="#"  onclick="confirmDeletion(event)">Supprimer</a></li>
                     <div class="logout">
     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

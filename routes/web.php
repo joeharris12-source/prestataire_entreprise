@@ -40,6 +40,7 @@ Route::middleware(['IsEntrprestataire'])->group(function () {
 });
 Route::get('/entreprise/register', [EntrepriseController::class, 'showRegisterForm'])->name('login2');
 Route::post('/entreprise/register', [EntrepriseController::class, 'register'])->name('entreprise.register');
+Route::get('/entreprise/prestataires', [EntrepriseController::class, 'showPrestataires'])->name('entreprise-prestataires');
 
 Route::middleware(['auth:entreprise'])->group(function () {
     Route::get('/entreprise/dashboard', [DashboardEntrepriseController::class, 'index'])->name('entreprise.dashboard');
@@ -52,6 +53,9 @@ Route::middleware(['auth:entreprise'])->group(function () {
     Route::get('/projets/{id}/edit', [ProjetController::class, 'edit'])->name('projets.edit');
     Route::put('/projets/{id}', [ProjetController::class, 'update'])->name('projets.update');
     Route::delete('/projets/{id}', [ProjetController::class, 'destroy'])->name('projets.destroy');
+    Route::get('/api/inscriptions', [EntrepriseController::class, 'getInscriptionsData']);
+    Route::get('/api/secteurd\'activite',[EntrepriseController::class,'getSecteursActiviteData']);
+
 });
 
 

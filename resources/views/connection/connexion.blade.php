@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ asset('assets/css/login.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/connexion.css') }}">
     <title>Connexion</title>
 </head>
 <body>
@@ -32,32 +32,7 @@
                 <input type="submit" value="Se connecter">
             </form>
         </div>
-        <footer>
-            <div class="footer">
-                <div class="footer-left">
-                    <img src="{{ asset('assets/images/1628624206036.jpg') }}" alt="" class="logo">
-                </div>
-                <div class="footer-center">
-                    <p>&copy; 2024 SPARK CORPORATION</p>
-                </div>
-                <div class="footer-right">
-                    <div class="contact-info">
-                        <h2>Contactez-nous</h2>
-                        <h3>+228 00 00 00 00</h3>
-                    </div>
-                    <div class="reseau-info">
-                        <div class="reseau-info-title">
-                            <h2>Rejoignez-nous</h2>
-                        </div>
-                        <div class="images">
-                            <img src="{{ asset('assets/images/X.png') }}" alt="twitter">
-                            <img src="{{ asset('assets/images/linkedIN1.png') }}" alt="linkedin">
-                            <img src="{{ asset('assets/images/facebook1.png') }}" alt="facebook">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
+    
     </div>
 </body>
 </html>

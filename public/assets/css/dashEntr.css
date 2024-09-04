@@ -285,4 +285,41 @@ p {
 .btn-delete:hover {
     background-color: #c0392b;
 }
+.prestataires-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.prestataires-table th, .prestataires-table td {
+    padding: 15px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.prestataires-table th {
+    background-color: #34495e;
+    color: #ecf0f1;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+}
+
+.prestataires-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.prestataires-table tr:hover {
+    background-color: #f1f1f1;
+    transition: background-color 0.3s ease;
+}
+
+.prestataires-table td {
+    color: #2c3e50;
+    font-size: 16px;
+}
 

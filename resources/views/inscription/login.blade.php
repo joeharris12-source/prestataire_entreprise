@@ -70,78 +70,79 @@
         </header>
         <div class="overlay"></div>
         <div class="form-container">
-            <h2>Inscription Prestataire</h2>
-            <div class="button-group">
-                <a href="" class="btn-particulier">Particulier</a>
-                <a href="{{ route('login1') }}" class="btn-entreprise">Entreprise</a>
-            </div>
-            <form action="{{ route('prestataire.register') }}" method="POST" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px">
-                @csrf
-                <div class="form-group">
-                    <label for="name">Nom :</label>
-                    <input type="text" id="name" name="name" value="{{ old('name') }}" required>
-                    @if ($errors->has('name'))
-                        <span class="error-message">{{ $errors->first('name') }}</span>
-                    @endif
-                </div>
-                <div class="form-group">
-                    <label for="firstname">Prénom :</label>
-                    <input type="text" id="firstname" name="firstname" value="{{ old('firstname') }}" required>
-                    @if ($errors->has('firstname'))
-                        <span class="error-message">{{ $errors->first('firstname') }}</span>
-                    @endif
-                </div>
-                <div class="form-group">
-                    <label for="email">Email :</label>
-                    <input type="email" id="email" name="email" value="{{ old('email') }}" required>
-                    @if ($errors->has('email'))
-                        <span class="error-message">{{ $errors->first('email') }}</span>
-                    @endif
-                </div>
-                <div class="form-group">
-                    <label for="telephone">Téléphone :</label>
-                    <input type="text" id="telephone" name="telephone" value="{{ old('telephone') }}">
-                    @if ($errors->has('telephone'))
-                        <span class="error-message">{{ $errors->first('telephone') }}</span>
-                    @endif
-                </div>
-                <div class="form-group">
-                    <label for="ville">Ville :</label>
-                    <input type="text" id="ville" name="ville" value="{{ old('ville') }}">
-                    @if ($errors->has('ville'))
-                        <span class="error-message">{{ $errors->first('ville') }}</span>
-                    @endif
-                </div>
-                <div class="form-group">
-                    <label for="secteurs_activite">Secteurs d'activité :</label>
-                    <input type="text" id="secteurs_activite" name="secteurs_activite" value="{{ old('secteurs_activite') }}">
-                    @if ($errors->has('secteurs_activite'))
-                        <span class="error-message">{{ $errors->first('secteurs_activite') }}</span>
-                    @endif
-                </div>
-                <div class="form-group">
-                    <label for="adresse">Adresse :</label>
-                    <input type="text" id="adresse" name="adresse" value="{{ old('adresse') }}">
-                    @if ($errors->has('adresse'))
-                        <span class="error-message">{{ $errors->first('adresse') }}</span>
-                    @endif
-                </div>
-                <div class="form-group">
-                    <label for="password">Mot de passe :</label>
-                    <input type="password" id="password" name="password" required>
-                    @if ($errors->has('password'))
-                        <span class="error-message">{{ $errors->first('password') }}</span>
-                    @endif
-                </div>
-                <div class="form-group">
-                    <label for="password_confirmation">Confirmer le mot de passe :</label>
-                    <input type="password" id="password_confirmation" name="password_confirmation" required>
-                </div>
-                <div class="form-group" style="grid-column: span 2; text-align: center;">
-                    <input type="submit" value="S'inscrire">
-                </div>
-            </form>
+    <h2>Inscription Prestataire</h2>
+    <div class="button-group">
+        <a href="" class="btn-particulier">Particulier</a>
+        <a href="{{ route('login1') }}" class="btn-entreprise">Entreprise</a>
+    </div>
+    <form action="{{ route('prestataire.register') }}" method="POST">
+        @csrf
+        <div class="form-group">
+            <label for="name">Nom :</label>
+            <input type="text" id="name" name="name" value="{{ old('name') }}" required>
+            @if ($errors->has('name'))
+                <span class="error-message">{{ $errors->first('name') }}</span>
+            @endif
         </div>
+        <div class="form-group">
+            <label for="firstname">Prénom :</label>
+            <input type="text" id="firstname" name="firstname" value="{{ old('firstname') }}" required>
+            @if ($errors->has('firstname'))
+                <span class="error-message">{{ $errors->first('firstname') }}</span>
+            @endif
+        </div>
+        <div class="form-group">
+            <label for="email">Email :</label>
+            <input type="email" id="email" name="email" value="{{ old('email') }}" required>
+            @if ($errors->has('email'))
+                <span class="error-message">{{ $errors->first('email') }}</span>
+            @endif
+        </div>
+        <div class="form-group">
+            <label for="telephone">Téléphone :</label>
+            <input type="text" id="telephone" name="telephone" value="{{ old('telephone') }}">
+            @if ($errors->has('telephone'))
+                <span class="error-message">{{ $errors->first('telephone') }}</span>
+            @endif
+        </div>
+        <div class="form-group">
+            <label for="ville">Ville :</label>
+            <input type="text" id="ville" name="ville" value="{{ old('ville') }}">
+            @if ($errors->has('ville'))
+                <span class="error-message">{{ $errors->first('ville') }}</span>
+            @endif
+        </div>
+        <div class="form-group">
+            <label for="secteurs_activite">Secteurs d'activité :</label>
+            <input type="text" id="secteurs_activite" name="secteurs_activite" value="{{ old('secteurs_activite') }}">
+            @if ($errors->has('secteurs_activite'))
+                <span class="error-message">{{ $errors->first('secteurs_activite') }}</span>
+            @endif
+        </div>
+        <div class="form-group">
+            <label for="adresse">Adresse :</label>
+            <input type="text" id="adresse" name="adresse" value="{{ old('adresse') }}">
+            @if ($errors->has('adresse'))
+                <span class="error-message">{{ $errors->first('adresse') }}</span>
+            @endif
+        </div>
+        <div class="form-group">
+            <label for="password">Mot de passe :</label>
+            <input type="password" id="password" name="password" required>
+            @if ($errors->has('password'))
+                <span class="error-message">{{ $errors->first('password') }}</span>
+            @endif
+        </div>
+        <div class="form-group">
+            <label for="password_confirmation">Confirmer le mot de passe :</label>
+            <input type="password" id="password_confirmation" name="password_confirmation" required>
+        </div>
+        <div class="form-group submit-group">
+            <input type="submit" value="S'inscrire">
+        </div>
+    </form>
+</div>
+
     </div>
     <footer>
         <div class="footer">

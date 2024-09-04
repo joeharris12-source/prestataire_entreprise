@@ -17,7 +17,7 @@ class CreateEntrprestatairesTable extends Migration
             $table->string('name');
             $table->string('firstname');
             $table->string('email')->unique();
-            $table->string('telephone');
+            $table->number('telephone');
             $table->string('ville');
             $table->string('adresse');
             $table->string('secteurs_activite');

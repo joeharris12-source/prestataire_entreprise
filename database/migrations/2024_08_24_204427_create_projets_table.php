@@ -12,7 +12,7 @@ class CreateProjetsTable extends Migration
             $table->unsignedBigInteger('entreprise_id');
             $table->string('intitule');
             $table->text('description');
-            $table->decimal('budget', 15, 2);
+            $table->float('budget', 15);
             $table->integer('temps_execution'); 
             $table->string('cahier_charge'); 
             $table->timestamps();

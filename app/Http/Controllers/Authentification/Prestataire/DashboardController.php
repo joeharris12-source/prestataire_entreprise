@@ -15,20 +15,12 @@ class DashboardController extends Controller
         // Récupérer les informations du prestataire actuellement connecté
         $prestataire = Auth::guard('prestataire')->user();
 
-        // Récupérer les projets liés au prestataire
-        $completedProjects = Project::where('id', $prestataire->id)
-                                    ->where('status', 'completed')
-                                    ->get();
-
-        $ongoingProjects = Project::where('prestataire_id', $prestataire->id)
-                                   ->where('status', 'ongoing')
-                                   ->get();
+     
 
         // Passer les données à la vue
         return view('dashboard.dashboardPres', [
             'prestataire' => $prestataire,
-            'completedProjects' => $completedProjects,
-            'ongoingProjects' => $ongoingProjects,
+        
         ]);
     }
 }

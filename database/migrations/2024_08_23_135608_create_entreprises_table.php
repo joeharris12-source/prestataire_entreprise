@@ -12,7 +12,7 @@ class CreateEntreprisesTable extends Migration
             $table->string('name');
             $table->string('status');
             $table->string('email')->unique();
-            $table->string('telephone');
+            $table->number('telephone');
             $table->string('ville');
             $table->string('adresse');
             $table->string('password');
